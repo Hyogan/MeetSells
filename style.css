@@ -1,0 +1,424 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type : none;
+    text-decoration : none;
+}
+header {
+    min-height : 700px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    flex-direction: column;
+    background: url("assets/images/ecommerce-g0b53dac46_1920.jpg");
+} 
+                        /*|----------------------------------------|
+                        +--------------------------------+
+                        // Styling the absolute nav in the header//
+                          +--------------------------------+
+                        |----------------------------------------|*/
+                        
+
+
+header .absolute-nav {
+    width: 100%;
+    height: 13%;
+    background : linear-gradient(150deg, rgba(41, 120, 223, 0.267), rgba(41, 120, 223, 0.271)),url("christmas/guirlande2.59db429a.png") center;
+    position: fixed;
+    top: 0px;
+    box-sizing : border-box;
+    display: flex;
+    justify-content : space-between;
+    align-items: center;
+    padding : 0 7%;
+}
+header .absolute-nav img {
+    width: 20%;
+    border-radius: 50%;
+    margin-right : 10px;
+}
+header .absolute-nav .web-title{
+    display: flex;
+    align-items: center;
+}
+
+header .absolute-nav .web-title p{
+    margin-left: 10px;
+    color: white;
+}
+header .absolute-nav .buttons {
+    display: flex;
+    min-width: 35%;
+    background-color: rgba(87, 87, 219, 0.616);
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+header .absolute-nav button {
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    padding : 10px 20px;
+    border: none;
+    background: linear-gradient(90deg,rgba(0, 221, 255, 0.911) 50%, transparent);
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    background-position: 100% 0%;
+    background-size: 100% 0%;
+    font-weight: 600;
+    color : white;
+}
+header .absolute-nav button:hover {
+    transition: 1s;
+    cursor: pointer;
+    background-position: 200% 00%;
+    background-size : 200% 100% ;
+    color: rgb(31, 31, 31);
+}
+
+header .change-pic {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    border : none;
+}
+
+header .change-pic:hover {
+    color: #4a98fd;
+    background-color: #d8daf1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+                            /*|----------------------------------------|
+                        +--------------------------------+
+                        // Styling the main part of the header//
+                          +--------------------------------+
+                        |----------------------------------------|*/
+header .Website-title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 45px;
+
+}
+
+header .Website-title span {
+    font-size: 200px;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: capitalize;
+    font-weight: 500;
+    color:rgb(0, 2, 133);
+    transition : .5s;
+    background-color: #3399ff8f;
+    text-shadow : 2px 2px rgb(7, 18, 62);
+    margin-bottom: 12px;
+}
+
+    header .Website-title span:hover {
+        color : rgb(0, 51, 255);
+        text-shadow : 5px 5px rgb(7, 18, 62);
+        box-shadow: 6px 6px #094888;
+    }
+
+header .website-desc{
+    font-size: 23px;
+    color: rgb(10, 10, 10);
+    font-weight: 600;
+    max-width: 50%;
+    text-align : center;
+    background: #094888b7;
+    padding: 15px 0;
+}
+ 
+.sign-up-login {
+    display: flex;
+    margin-top: 3%;
+   
+}
+.sign-up-login button {
+    border: none;
+    background: linear-gradient(190deg,rgb(0, 221, 255) 50%, transparent);
+    margin-right: 15px;
+}
+.sign-up-login button  a {
+    color: rgb(0, 0, 0);
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    width: 175px;
+    font-size: 15px;
+    font-weight: 500;
+    background-image: linear-gradient(90deg, rgba(0, 102, 255, 0.867) 50% , transparent 50%);
+    background-position: 0%;
+    background-size: 0%;
+    font-weight: 700;
+    font-size: 17px;
+
+}
+.sign-up-login  a:hover{
+    transition: 1.5s;
+    background-size: 200%;
+    background-position: 0% 20  0%; 
+    color: white;
+}
+
+                        /*|----------------------------------------|
+                        +--------------------------------+
+                        // Styling the main content//
+                          +--------------------------------+
+                        |----------------------------------------|*/
+main {
+    width: 100%;
+    background: linear-gradient(150deg,rgba(0, 255, 242, 0.00),rgba(0, 102, 255, 0.318));
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    background-color: rgba(0, 255, 21, 0.363);
+    align-items: center;
+    justify-content: first baseline ; 
+}
+
+
+main .item-block {
+    background: radial-gradient(rgba(216, 237, 250, 0.14),rgba(0, 102, 255, 0.181));
+    background: red;
+    height: 100%;
+    padding: 0px 15%;
+    width: 1400px;
+
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    background-size: 80%;
+}
+
+.item-block#b1{
+    background : url("assets/images/tech/pexels-junior-teixeira-2047905.jpg") center ;
+}
+.item-block#b2{
+    background: url("assets/images/clothes/pexels-ksenia-chernaya-3965545.jpg") no-repeat;
+    background-size: cover;
+}
+.item-block#b3{
+    background: url("assets/images/accesories/pexels-karol-d-325153.jpg") no-repeat;
+    background-size: 100%;
+}
+.item-block#b4{
+    background: url("assets/images/shoes/pexels-melvin-buezo-2529148.jpg") center;
+    background-size: 100%;
+}
+.item-block#b5{
+    background: url("assets/images/jewelry/wedding-rings-gbf0700941_1920.jpg") center;
+}
+.item-block#bt1{
+    color: red;
+}
+main .item-block .item-pics {
+    display: grid;
+    max-width: 1300px;
+    width: 90%;
+    grid-template-columns:repeat(2, 300px);
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 45px;
+}
+main .item-block button i {
+    font-size: 17px;
+    margin-right: 12px;
+}
+main .item-block button:hover {
+    background: linear-gradient(100deg,rgba(0, 110, 255, 0.897),rgba(60, 255, 0, 0.664));
+    transition : 1s;
+    cursor: pointer;
+    padding: 18px 40px;
+    
+}
+/* main #b2 , main #b4{
+    flex-direction: column;
+} */
+main .item-block button {
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    padding : 18px 30px ;
+    border: none;
+    width: 300px;
+    background: linear-gradient(90deg,rgba(60, 255, 0, 0.664),rgba(0, 110, 255, 0.897));
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 7px 7px 5px 2px rgba(0, 110, 255, 0.897);
+}
+
+
+.item-block .item-pics img {
+    width: 95%;
+    border-radius : 10px;
+}
+
+.item-block .item-pics img:hover{
+    box-shadow: 4px 4px 4px 2px rgb(128, 127, 127);
+    transition: .7s;
+    animation: img-translate 1s ;
+    position: relative;
+    bottom: 15px;
+}
+
+@keyframes img-translate {
+    0%{
+        position: relative;
+        bottom: 0px;
+    }
+    100%{
+        position: relative;
+        bottom: 15px;
+    }
+}
+
+                        /*|----------------------------------------|
+                        +--------------------------------+
+                        // Styling the footer block//
+                          +--------------------------------+
+                        |----------------------------------------|*/
+
+
+footer {
+    background-color: rgb(53, 86, 129);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+footer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 60%;
+    margin: 0 100px;
+    height: 90%;
+    background-color: rgba(6, 179, 179, 0.082);
+}
+footer form .title {
+    font-size: 35px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    color:rgb(119, 119, 226);
+    color: hsl(0,2%,94%);
+    font-weight: 900;
+    text-decoration: underline;
+    cursor: pointer;
+}
+footer form .form-desc {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+form label {
+    margin-bottom: 10px;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+input[type="text"], input[type="email"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    padding-left: 10px;
+    height: 35px;
+    width: 250px;
+    border: hsl(0,2%,94%);
+    box-shadow: 5px 5px 5px 1px rgb(82, 98, 134);
+}
+    input[type="text"]:hover, input[type="email"]:hover {
+        box-shadow: 5px 5px 5px 1px rgb(97, 113, 150);
+        transition: 1s;
+    }
+input[type="submit"] , input[type="reset"] {
+    padding: 10px 7px;
+    margin: 5px;
+    border: none;
+    background: rgb(111, 111, 204);
+    font-weight: 700;
+    color: hsl(0,2%,94%);
+    cursor: pointer;
+    box-shadow: 5px 5px 1px 2px  rgb(81, 81, 155);
+    margin-right: 15px;
+    border-radius: 2px;
+    /* box-shadow: 5px 5px 1px 2px  rgb(81, 81, 155); */
+}
+    input[type="submit"]:hover , input[type="reset"]:hover {
+        box-shadow: -5px -5px 1px 2px  rgb(111,111,204);
+        background: rgb(81,81,155);
+        transition: .5s;
+    }
+
+form .validate-form {
+    color: red;
+    margin-bottom: 5px;
+    display: none;
+}
+
+footer .about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 40%;
+    height: 100%;
+}
+footer .about-us p , footer .about-us h2 {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+footer i {
+    font-size: 15px;
+    margin-right: 3px;
+}
+
+    .about-us h2:hover , footer .copyright:hover{
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+
+    .add-product form label[for="buttons"] input:hover{
+        cursor: pointer;  
+        animation: color-change 1.2s ease-in-out infinite;
+    }
+    
+    @keyframes color-change {
+        0%{
+            background: white;
+        }
+        50%{
+            background:linear-gradient(25deg,rgba(45, 129, 22, 0.76)25%,rgba(22, 47, 129, 0.726)); 
+        }
+        70%{
+            background:linear-gradient(25deg,rgba(22, 47, 129, 0.726)30%,rgba(45, 129, 22, 0.76)); ;
+        }
+    }
+    

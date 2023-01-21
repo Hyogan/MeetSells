@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body{
+    display: flex;
+    justify-content : center;
+    align-items:center;
+    background : url("assets/images/ecommerce-g0b53dac46_1920.jpg");
+    padding: 0 20px;
+}
+
+header .title{
+    font-size: 110px;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: capitalize;
+    color:rgb(0, 2, 133);
+    transition : .5s;
+    background-color: #3399ff8f;
+    text-shadow : 2px 2px rgb(6, 16, 56);
+    text-align: center;
+    margin-right: 10px;
+    font-weight: 600;
+}
+    header .title:hover {
+        color : rgba(13, 0, 202, 0.938);
+        text-shadow : 5px 5px rgb(7, 18, 62);
+        box-shadow: 6px 6px #094888;
+    }
+
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3%;
+    background-color: rgba(255, 255, 255, 0.753);
+    min-height: 500px;
+    padding-top: 10px;
+
+}
+main nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+main nav ul{
+    width: 100%;
+    height: 70px;
+    background : rgba(0, 0, 139, 0.301);
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+main nav ul li {
+    padding: 10px;
+}
+main nav ul li:hover{
+    background-color: rgb(0, 225, 255);
+    cursor: pointer;
+    transition: 1s;
+}
+main nav ul li.active{
+    border-bottom: 7px rgb(0, 247, 255) solid;
+    border-bottom : 7px rgba(1, 1, 124, 0.61) solid;
+    font-weight: 900;
+}
+main nav img {
+    width: 30%;
+    background : rgba(0, 0, 139, 0.301);
+}
+main section{
+    display: flex;
+    flex-direction: column;
+}
+main .intro-text{
+    margin: 15px 0;
+}
+main section form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 120px;
+    height: 100%;
+}
+main section form input{
+    width: 200px;
+    height: 25px;
+    background: rgba(85, 110, 155, 0.493);
+    border: none;
+    border-bottom: 2px solid blue ;
+}
+main section form * {
+    margin-bottom: 10px;
+}
+main section form .buttons{
+    display: flex;
+}
+main section form .buttons input{
+    display: flex;
+    background-color: rgb(0, 183, 255);
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    height: 40px;
+    font-size: 17px;
+    color: #ffff;
+    font-weight: 400;
+}
+main section form .buttons input:hover{
+    transition : 1s;
+    background-color: rgb(0, 102, 255);
+    border-radius: 10px;
+}

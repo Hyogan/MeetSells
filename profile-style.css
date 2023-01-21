@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body{
+    flex-direction: column;
+    background: url("christmas/christmas-tree-gd15b6d9bb_1280.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 110vh;
+}
+.pseudo {
+    background: url("christmas/christmas-tree-gd15b6d9bb_1280.jpg");
+}
+header {
+    display: flex;
+    width: 100%;
+    min-height: 70px;
+    padding: 30px 0;
+    box-sizing: border-box;
+    background: linear-gradient(150deg,rgba(209, 38, 38, 0.363),rgba(90, 160, 241, 0.363),rgba(0, 102, 255, 0.397),rgba(206, 45, 45, 0.377)),url("christmas/guirlande2.59db429a.png") center;
+    background: linear-gradient(150deg,rgba(209, 38, 38, 0.163),rgba(90, 160, 241, 0.163),rgba(0, 102, 255, 0.197),rgba(206, 45, 45, 0.177)),url("christmas/guirlande2.59db429a.png") center;
+}
+
+header nav{
+    display: flex;
+    width: 100%;
+}
+header nav ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+header nav ul li a {
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+main {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+                                    /* Decoration for the profile menu */
+                                    /* Decoration for the profile menu */
+main .profile-menu{
+    width: 20%;
+    background: rgba(12, 194, 67, 0.616);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+}
+main .profile-menu .about-user{
+    font-size: 25px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    color: white;
+}
+main .profile-menu .user-pic-name{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+    border-bottom : 2px solid rgb(20, 20, 20);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+main .profile-menu .user-pic-name i{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(83, 83, 83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+}
+main .profile-menu .user-pic-name img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+main .profile-menu .user-links{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+main .profile-menu .user-links li a{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(102, 248, 236, 0.26);
+    margin-bottom: 10px;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing : border-box;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.849);
+    gap: 10px;
+}
+main .profile-menu .user-links li a.active{
+    background-color: rgba(93, 250, 237, 0.767);;
+}
+main .profile-menu .user-links li a:hover{
+    background-color: rgba(93, 250, 237, 0.767);
+    transition: .5s;
+}
+                                    /* Decoration for the messages block */
+                                    /* Decoration for the messages block */
+
+main .messages-block{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(25deg,rgba(132, 238, 132, 0.678), rgba(132, 238, 132, 0.384)),url("./msg-icon.jpg") 50px 50px;
+    background-size: 10%;
+    background-origin: content-box;
+    background-repeat:space;
+    background-blend-mode:lighten;
+    border-radius: 4px;
+}
+main .messages-block .discution{
+    width: 60%;
+    height: 90%;
+    background : linear-gradient(rgb(21, 63, 148),rgb(45, 89, 64));
+    background-size: 50px;
+    border-radius: 10px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    box-shadow: 4px 4px 4px hsl(0,0,10%);
+}
+
+main .messages-block .discution h4{
+    color: white;
+    font-size: 17px;
+    padding: 10px;
+    background: linear-gradient(15deg,rgba(157, 252, 133, 0.603),rgba(51, 240, 4, 0.76));
+    margin: 10px 0;
+    width: 45% ;
+}
+main .messages-block .discution .correspondant-name{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-15deg,rgb(157, 252, 133),rgba(4, 240, 209, 0.781));
+    position: static;
+    top: 50px;
+    font-size: 20px;
+}
+
+main .messages-block .discution .received-message{
+    align-self: left;
+    position: sticky;
+    border-radius: 0 10px 10px 0;
+}
+
+main .messages-block .discution .send-message{
+    align-self: right;
+    position: sticky;
+    left: 49%;
+    border-radius: 10px 0 0 10px;
+}
+main .messages-block .discution form{
+    display: flex;
+    justify-content : center;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    top: 85%;
+    width: 100%;
+}
+
+
+main .messages-block .discution textarea{
+    height: 35px;
+    width: 455px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: 600;
+    margin-left: 22px;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: rgba(39, 39, 39, 0.87);
+}
+main .messages-block .discution textarea::placeholder {
+    color: rgb(0, 132, 255);
+    font-weight: 600;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+main .messages-block .discution button[type="submit"]{
+    border: none;
+    margin-left: 5px;
+    padding: 10px 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 15px;
+    color:white;
+    background: rgb(105, 158, 255);
+    position: relative;
+    right: 50px;
+}
+main .messages-block .discution button[type="submit"]:hover{
+    background: rgb(54, 118, 238);
+    cursor: pointer;
+    transition: .3s;
+}
+                                    /* Decoration for the contact list block */
+                                    /* Decoration for the contact list block */
+
+main .contacts-block, main .added-product{
+    width: 20%;
+    background-color: rgba(135, 135, 236, 0.767);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 45px;
+}
+main .contacts-block .block-title ,
+main .added-product .block-title{
+    font-size: 25px;
+    margin-bottom: 45px;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    color: white;
+}
+
+main .contacts-block h4,
+main .added-product h4{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(102, 248, 236, 0.26);
+    margin-bottom: 10px;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing : border-box;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.751);
+}
+main .contacts-block h4:hover,
+main .added-product h4:hover{
+    background-color: rgba(93, 250, 237, 0.767);
+    transition: .5s;
+}
+
+.contacts-block h4 img,
+.added-product h4 img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+                                    /* Styling or decorating the add product section */
+                                    /* Styling or decorating the add product section */
+
+.add-product{
+    width: 55%;
+    height: 100%;
+    background-color: rgba(0, 153, 255, 0.212);
+    margin-top: 10px;
+    align-self: center;
+}
+.add-product .add-title{
+    margin-left: 25%;
+    margin-top: 20px;
+    font-size: 35px;
+    border-bottom: 4px solid white;
+    width: 50%;
+    padding-left: 15px;
+    color: rgb(250, 250, 250);
+}
+.add-product form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.add-product form textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+.add-product form label{
+    display: flex;
+    margin: 10px 0;
+}
+.add-product form label input{
+    width: 250px;
+    height: 20px;
+    margin-left: 10px;
+    border: none;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.add-product form .product-pics{
+    width: 90%;
+    background-color: rgba(0, 255, 98, 0.301);
+    box-shadow: 4px 4px 1px 2px  rgba(0,255,98,.4);
+    min-height: 150px;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    gap: 10px 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.add-product form .product-pics .product-pic{
+    border: 1px solid #ccc;
+    display : block;
+    padding: 6px 12px;
+    cursor: pointer;
+    max-width: 75%;
+}
+.add-product form label[for="buttons"] input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    margin-right: 10px;
+    border: 2px solid black;
+    font-size: 19px;
+    background-color: rgb(255, 255, 255);
+}
+.add-product form label[for="buttons"] input:hover{
+    cursor: pointer;  
+    animation: color-change 1.2s ease-in-out infinite;
+}
+
+@keyframes color-change {
+    0%{
+        background: white;
+    }
+    50%{
+        background:linear-gradient(25deg,rgba(45, 129, 22, 0.76)25%,rgba(22, 47, 129, 0.726)); 
+    }
+    70%{
+        background:linear-gradient(25deg,rgba(22, 47, 129, 0.726)30%,rgba(45, 129, 22, 0.76)); ;
+    }
+}
+
+
+                                    /* Styling or decorating the footer */
+                                    /* Styling or decorating the footer */
+
+                                
+
+ 
+footer{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 300px;
+    bottom : 0;
+    background-color:rgb(18, 173, 173);
+    box-sizing: border-box;
+    margin-top: 190px;
+}
+
+footer ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+}
+
+footer ul li a{
+    font-size: 16px;
+    color: rgb(43, 43, 43);
+    text-transform: capitalize;
+    line-height: 25px;
+}
