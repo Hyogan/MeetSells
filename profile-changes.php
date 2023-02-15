@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="profile-style.css">
-        <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
-        <title>Document</title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">PRODUCT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">ABOUT</a></li>
-                </ul>
-            </nav>
-        </header>
 
+
+
+
+<?php
+session_start();
+    require "header.php";
+   returnHeader($_SESSION["userName"],"style/profile-style.css");
+
+   $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+   $recupUser = $bdd->prepare("SELECT * FROM Users where UserId = ?");
+   $recupUser->execute(array($_SESSION["id"]));
+   $productOwner = 10;//= $_GET["idOwner"];
+
+?>
         <main class="main-content">
             <section class="profile-menu">
                 <h1 class="about-user"> </i> About me</h1>
@@ -28,10 +21,10 @@
                     <h3 class="username">@NelsonArsene <i class="fa-solid fa-user"></i></h3>
                 </div>
                 <ul class="user-links">
-                    <li><a href="profile-messages.html" class="menu-item messages"><i class="fa-regular fa-message"></i>Messages</a></li>
-                    <li><a href="profile-product.html" class="menu-item add-new-product"> <i class="fa-solid fa-cart-plus"></i> Add a product</a></li>
-                    <li><a href="#" class="menu-item change-profile active"><i class="fa-solid fa-user"></i>Change profile</a></li>
-                    <li><a href="" class="menu-item logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></i> Log Out</a></li>
+                    <li><a href="" class="menu-item messages"><i class="fa-regular fa-message"></i>Messages</a></li>
+                    <li><a href="profile-product.php?idOwner=<?= $recupUser->fetch()['userId']?>" class="menu-item add-new-product active"> <i class="fa-solid fa-cart-plus"></i> Add a product</a></li>
+                    <li><a href="profile-changes.php?idOwner<?= $recupUser->fetch()['userId']?>" class="menu-item change-profile"><i class="fa-solid fa-user"></i>Change profile</a></li>
+                    <li><a href="deconnexion.php" class="exit-account" ><i class="fa-solid fa-arrow-right-from-bracket"></i></i> Log Out</a></li>
                 </li>
             </section>
             <section class="messages-block">

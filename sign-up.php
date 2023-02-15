@@ -1,3 +1,79 @@
+<?php
+
+session_start();
+$bdd = new PDO("mysql:host=localhost;dbname=MEETSELLS;charset=utf8","root","");
+$errmsg = "";
+    if(isset($_POST["submitSign"])){
+        if(!empty($_POST["firstname"]) AND !empty($_POST["lastname"]) AND !empty($_POST["pseudo"]) AND !empty($_POST["email"]) AND !empty($_POST["phonenum"]) AND !empty($_POST["password"])){
+            $sql = "INSERT INTO Users(firstname,lastname,pseudo,email,phoneNumber,userPassword) VALUES(? ,? ,?, ?,?, ?)";
+            $name = $_POST["firstname"];
+            $surname = $_POST["lastname"];
+            $pseudo = $_POST["pseudo"];
+            $email = $_POST["email"];
+            $phonenum = $_POST["phonenum"];
+            $password = ($_POST["password"]);
+            
+            $sql1 = "SELECT * FROM Users WHERE pseudo = ? or email = ?";
+            $checkUnique = $bdd->prepare($sql1);
+            $checkUnique->execute(array($pseudo,$email));
+            $errmsg="";
+            if($checkUnique->rowCount() > 0){
+                $errmsg = "Pseudo or email already existant ! please change it !";
+            }
+            else{
+                $insertMember = $bdd->prepare($sql);
+                $insertMember->execute(array($name,$surname,$pseudo,$email,$phonenum,$password));
+                $errmsg = "";    
+                $recupUser = $bdd->prepare("SELECT * FROM Users WHERE pseudo = '?' AND userPassword = '?'");
+                $recupUser->execute(array($pseudo,$password));
+                $_SESSION["id"] = $recupUser->fetch()["userID"];
+                $_SESSION["owner"] = 'admin';
+                header("location:home.php");
+            }
+        }
+    }
+
+    if(isset($_POST["submitLog"])){
+        
+        if(!empty($_POST["usernamelog"]) AND !empty($_POST["passwordlog"])){
+            $sql = "SELECT * FROM Users WHERE pseudo = ? AND userPassword = ?";
+            $recupUser = $bdd->prepare($sql);
+            $name = $_POST["usernamelog"];
+            $pass = $_POST["passwordlog"];
+            $recupUser->execute(array($name,$pass));
+            if($recupUser->rowCount()>0){
+                $errmsg = "";
+                $_SESSION["id"] = $recupUser->fetch()["userID"];
+                $_SESSION["owner"] = 'user';
+                header("location:home.php");
+            }
+            else{
+                $errmsg = "Inexistant users account for those two values !!";
+            }
+        } 
+    }
+
+    if(isset($_POST["submitAd"])){
+        if(!empty($_POST['usernameAd']) AND !empty($_POST['passwordAd'])){
+            $sql = "SELECT * FROM Administrators Where adminPseudo = ? AND adminPassword = ?";
+            $adminpseudo = $_POST['usernameAd'];
+            $adminpass = $_POST['passwordAd'];
+
+            $recupAdmin = $bdd->prepare($sql);
+            $recupAdmin->execute(array($adminpseudo,$adminpass));
+            if($recupAdmin->rowCount() > 0){
+                $errmsg = '';
+                $_SESSION["id"] = $recupAdmin->fetch()["idAdmin"];
+                $_SESSION["owner"] = 'admin';
+                header("location:home.php");
+            } 
+            else{
+                $errmsg = "Inexistant admin account for those two values";
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +81,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="40x40" href="assets/logo/meetsells-logo-zip-file/png/logo-no-background.png">
-        <link rel="stylesheet" href="sign-up-style.css">
+        <link rel="stylesheet" href="style/sign-up-style.css">
         <title>MeetSeels</title>
     </head>
     <body>
@@ -21,7 +97,7 @@
                 </ul>
             </nav>
             <section class="sign-up">
-                <form action="">
+                <form action="" method="post">
                     <label for="firstname"> Enter your first name : <input type="text" name="firstname" id="" required autocomplete="off"></label>
                     <label for="lastname"> Enter your last name : <input type="text" name="lastname" id="" required autocomplete="off"></label>
                     <label for="pseudo"> Enter your pseudo : <input type="text" name="pseudo" id="" required autocomplete="off"></label>
@@ -29,11 +105,19 @@
                     <label for="phonenum">Enter your phone number with country code : <input type="number" name="phonenum" id="" required autocomplete="off" placeholder="ex : +237675100726"></label>
                     <label for="password">Enter a password : <input type="password" name="password" id="" required autocomplete="off"></label>
                     <div class="buttons">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submitSign">
                         <input type="reset" value="Reset">
                     </div>
                 </form>
             </section>
+            <div class="error-msg"><?php  echo $errmsg?></div>
+            <style>
+                .error-msg{
+                    color : red;
+                    font-size : 18px;
+                    font-weight : 600;
+                }
+            </style>
         </main>
         <script>
 
@@ -54,7 +138,7 @@
             `
             ${nav}
             <section class="sign-up">
-                <form action="">
+                <form action="" method="post">
                     <label for="firstname"> Enter your first name : <input type="text" name="firstname" id="" required autocomplete="false"></label>
                     <label for="lastname"> Enter your last name : <input type="text" name="lastname" id="" required autocomplete="false"></label>
                     <label for="pseudo"> Enter your pseudo : <input type="text" name="pseudo" id="" required autocomplete="false"></label>
@@ -62,7 +146,7 @@
                     <label for="phonenum">Enter your phone number including country code : <input type="number" name="phonenum" id="" required autocomplete="false"></label>
                     <label for="password">Enter a password : <input type="password" name="password" id="" required autocomplete="false"></label>
                     <div class="buttons">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submitSign">
                         <input type="reset" value="Reset">
                     </div>
                 </form>
@@ -71,11 +155,11 @@
             ${nav}
             <section class="login">
                 <h1 class="intro-text">Login as user</h1>
-                <form action="">
+                <form action="" method="post">
                     <label for="usernamelog"> Enter your username <input type="text" name="usernamelog" id="" required></label>
-                    <label for="password"> Enter your password <input type="password" name="password" id="" required></label>
+                    <label for="passwordlog"> Enter your password <input type="password" name="passwordlog" id="" required></label>
                     <div class="buttons">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submitLog">
                         <input type="reset" value="Reset">
                     </div>
                 </form>
@@ -86,11 +170,11 @@
             ${nav}
             <section class="login-admin">
                 <h1 class="intro-text">Login as an administrator</h1>
-                <form action="">
-                    <label for="usernamelog"> Enter your admin username <input type="text" name="usernamelog" id="" required></label>
-                    <label for="usernamelog"> Enter your password <input type="password" name="password" id="" required></label>
+                <form action="" method="post">
+                    <label for="usernameAd"> Enter your admin username <input type="text" name="usernameAd" id="" required></label>
+                    <label for="passwordAd"> Enter your password <input type="password" name="passwordAd" id="" required></label>
                     <div class="buttons">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submitAd">
                         <input type="reset" value="Reset">
                     </div>
                 </form>

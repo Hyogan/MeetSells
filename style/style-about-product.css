@@ -10,7 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background:url("christmas/pexels-toni-cuenca-695971.jpg");
+    background:url("../christmas/pexels-toni-cuenca-695971.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -20,7 +20,7 @@ header {
     min-height: 70px;
     padding: 30px 0;
     box-sizing: border-box;
-    background: linear-gradient(150deg,rgba(209, 38, 38, 0.363),rgba(90, 160, 241, 0.363),rgba(0, 102, 255, 0.397),rgba(206, 45, 45, 0.377)),url("christmas/guirlande2.59db429a.png") center;
+    background: linear-gradient(150deg,rgba(209, 38, 38, 0.363),rgba(90, 160, 241, 0.363),rgba(0, 102, 255, 0.397),rgba(206, 45, 45, 0.377)),url("../christmas/guirlande2.59db429a.png") center;
 
 }
 

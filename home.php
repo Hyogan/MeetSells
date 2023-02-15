@@ -1,24 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>product-card</title>
-        <link rel="stylesheet" href="style-home.css">
-        <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">PRODUCT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">ABOUT</a></li>
-                </ul>
-            </nav>
-        </header>
+<?php
+session_start();
+if($_SESSION["id"]){
+    
+    $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+
+    if($_SESSION["owner"] == 'admin'){
+        $sql = "SELECT * FROM Administrators WHERE idAdmin = ?";
+        $ownerName = "";
+        $recupUser = $bdd->prepare($sql);
+        $recupUser->execute(array($_SESSION["id"]));
+        $ownerName = $recupUser->fetch()["adminPseudo"] . " Fogue";
+    } 
+    else{
+        $sql = "SELECT * FROM USERS WHERE userID = ?";
+        $recupUser = $bdd->prepare($sql);
+        $recupUser->execute(array($_SESSION["id"]));
+        $ownerName = $recupUser->fetch()["firstname"];
+    
+    }
+    $sql2 = "SELECT * FROM Products, ProductImages WHERE Products.pId = ProductImages.imgOwner AND ProductImages.ImageID = ?";
+    $recupProduct = $bdd->prepare($sql2);
+    $recupProduct->execute(array(1));
+    $_SESSION["userName"] = $ownerName;
+}
+else{
+    header("location:index.php");
+}
+?>
+
+
+<?php 
+    require_once "header.php" ;
+    returnHeader($ownerName,"style/style-home.css");
+?>
         <h1 class="main-title">Our Products</h1>
         <main>
             <section class="categories-section">
@@ -39,7 +53,36 @@
                 </fieldset>
             </section>
             <section class="products-sections">
-                <div class="product-card">
+                <?php
+                    if($recupProduct->rowCount() > 0){
+                        while($req = $recupProduct->fetch()){
+                            ?>
+                            <div class="product-card">
+                                <img src="<?= $req["img_scr"]?>" alt="product-pic -- <?= $req["pName"]?>">
+                                <div class="about-product">
+                                    <h4 class="product-name"><?= $req["pName"]?></h4>
+                                    <h5 class="product-card-price"><?= $req["pPrice"]?></h5>
+                                    <a href="product-info.php?pid=<?= $req["pID"] ?>">View Product</a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    else{?>
+                        <p class="no-product">No product for the moment sorry for the desagreement!!!</p>
+                        <style>
+                            .no-product{
+                                font-size : 50px;
+                                width: 400%;
+                                margin-top : -400px;
+                                color : red;
+                            }
+                        </style>
+                    <?php
+                    }
+                ?>
+                
+               <!--  <div class="product-card">
                     <img src="assets/images/accesories/analog-watch-1869928__340.jpg" alt="product-pic">
                     <div class="about-product">
                         <h4 class="product-name">Analog Watch</h4>
@@ -118,13 +161,13 @@
                         <h5 class="product-card-price">FCFA 65000</h5>
                         <a href="#">View Product</a>
                     </div>
-                </div>
+                </div> -->
             </section>
             <section class="socials-sections">
             <section class="pseudo"></section>
                 <h4 class="socials-title">Follow Us</h4>
                <ul>
-                <li><a href="#" class="fa-brands fa-facebook-f"></a></li>
+                <li><a href="" class="fa-brands fa-facebook-f"></a></li>
                 <li><a href="#" class="fab fa-twitter"></a></li>
                 <li><a href="#" class="fab fa-instagram"></a></li>
                 <li><a href="#" class="fab fa-linkedin"></a></li>

@@ -1,3 +1,18 @@
+<?php
+    if(isset($_POST["submit"])){
+        if(!empty($_POST["name"]) AND !empty($_POST["surname"]) AND !empty($_POST["email"])){
+            $bdd = new PDO("mysl:host=localhost;charset=UTF-8;dbname=MEETSELLS","root","");
+            $sql = "INSERT INTO newsletter(firstname,lastname,email) VALUES(? ? ?)";
+            $name = $_POST["name"];
+            $surname = $_POST["surname"];
+            $email = $_POST["email"];
+            $insertNewsLetterMember = $bdd->prepare($sql);
+            $insertNewsLetterMember->execute(array($name,$surname,$email));
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +20,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta author = "Nelson Tiagho">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
         <link rel="icon" type="image/png" sizes="40x40" href="assets/logo/meetsells-logo-zip-file/png/logo-no-background.png">
       
@@ -22,8 +37,8 @@
                 <div class="buttons">
                     
                     <button class="change-pic prev"><i class="fa-solid fa-arrow-left"></i></button>
-                    <a href="product-card.html"><button>Sign Up</button></a>
-                    <a href="sign-up.html"><button> Log in</button></a>
+                    <a href="sign-up.php"><button>Sign Up</button></a>
+                    <a href="sign-up.php"><button> Log in</button></a>
                     <a href="#desc-blocks"><button> Explore</button></a>
                     <button class="change-pic next"><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
@@ -35,15 +50,15 @@
                 
             </p>
             <div class="sign-up-login">
-               <button><a href="#sign-up">Sign Up</a></button> 
-                <button><a href="sign-up.html">Login</a></button>
+               <button><a href="sign-up.php">Sign Up</a></button> 
+                <button><a href="sign-up.php">Login</a></button>
             </div>
         </header>
         <main class="website-desc-blocks" id="desc-blocks" role="main">
             <div class="item-block slide" id="b1">  
                 <div class="item-abouts">
                     <h1 class="item-block-title" id="bt1">TECHNOLOGY</h1>
-                    <p class="item-desc">
+                    <p class="item-desc">   
                         Discover the best of the new technologies at the best prices with long terms of guaranty !!
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptates natus quidem
                             unde accusantium aspernatur.
@@ -137,7 +152,7 @@
 
 
             <footer class="footer-block" ariavalue="Footer" id="sign-up">
-                <form action="">
+                <form action="" method="post">
                     <h2 class="title">Suscribe to our newsletter</h2>
                     <p class="form-desc">
                         Suscribe to our newsletter and receive all news about our products and benefit of All
@@ -155,14 +170,14 @@
                         </label>   
                         <label for="email-block">
                             Your e-mail : 
-                            <input type="email" name="email-block" id="" placeholder="Enter your e-mail adress" required pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9. -]+\.[a-z]{2,}">
+                            <input type="email" name="email" id="" placeholder="Enter your e-mail adress" required pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9. -]+\.[a-z]{2,}">
                         </label>
                     </div>
                     
                     <h5 class="validate-form">Please enter correct values</h5>
                     <p class="footer-buttons">
                         <input type="reset" value="Reset">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submit">
                     </p>
                 </form>
                 <div class="about-us">
