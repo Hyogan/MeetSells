@@ -2,7 +2,8 @@
 
 <?php
     session_start();
-        $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+    require 'functions.php';
+        $bdd = launch_pdo();
         $recupUser = $bdd->prepare("SELECT * FROM Users where UserId = ?");
         $recupUser->execute(array($_SESSION["id"]));
        
@@ -27,7 +28,7 @@
 
             }
         }
-        $recupContacts = $bdd->prepare("SELECT * from Messages WHERE id_destinateur = ? OR id_recepteur=?");
+        $recupContacts = $bdd->prepare("SELECT DISTINCT * from contacts WHERE id_owner = ? OR id_contact=?");
         $recupContacts->execute(array($_SESSION["id"],$_SESSION['id']));
 
        
@@ -58,7 +59,10 @@
                 <div class="discution">
                     <h4 class="correspondant-name"><?= $productOwner; ?></h4>
                     <div class="discutions" id="discutions-block">
-                        
+                        <?php
+                        require 'loadMessage.php';
+                        loadMyMessages($productOwner);
+                        ?>
                     </div>                    
                     <form action="" class="send-message" method="post">
                         <textarea name="message-to-send" id="" placeholder="Message" cols="30" rows="10"></textarea>
@@ -73,12 +77,12 @@
                 <?php
                     if($recupContacts->rowCount() > 0){
                         while($reqcon = $recupContacts->fetch()){
-                            if($reqcon["id_destinateur"] == $_SESSION['id']){
+                            if($reqcon["id_owner"] == $_SESSION['id']){
                                 $recupContactsInfo = $bdd->prepare("SELECT * from Users WHERE userID = ?");
-                                $recupContactsInfo->execute(array($reqcon["id_recepteur"]));
+                                $recupContactsInfo->execute(array($reqcon["id_contacts"]));
 
                 ?> 
-                                <a href="profile-messages.php?idOwner=<?= $reqcon['id_recepteur']?>">
+                                <a href="profile-messages.php?idOwner=<?= $reqcon['id_contacts']?>">
                                     <h4 class="contact"> <img src="images/Anime-Bleach-47495.jpg" alt=""> 
                                         @<?=$recupContactsInfo->fetch()['pseudo']?>
                                     </h4>
@@ -86,10 +90,10 @@
                 <?php
                             }
                             else{
-                                $recupContactsInfo = $bdd->prepare("SELECT * from Users ,WHERE userID = ?");
-                                $recupContactsInfo->execute(array($reqcon["id_destinateur"]));
+                                $recupContactsInfo = $bdd->prepare("SELECT * from Users WHERE userID = ?");
+                                $recupContactsInfo->execute(array($reqcon["id_contact"]));
                                 ?>
-                                 <a href="profile-messages.php?idOwner=<?= $reqcon['id_destinateur']?>">
+                                 <a href="profile-messages.php?idOwner=<?= $reqcon['id_contact']?>">
                                     <h4 class="contact"> <img src="images/Anime-Bleach-47495.jpg" alt=""> 
                                         @<?=$recupContactsInfo->fetch()['pseudo']?>
                                     </h4>
@@ -142,11 +146,11 @@
         </footer>
 
         <script src="jquery.min.js"></script>
-        <script>
+        <!-- <script>
             setInterval('loadMessages()',500);
-            function lodMessages(){
+            function loadMessages(){
                 $("#discutions-block").load("loadMessage.php");
             }
-        </script>
+        </script> -->
     </body>
 </html>

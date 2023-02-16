@@ -1,7 +1,8 @@
 <?php
+    require 'functions.php';
     if(isset($_POST["submit"])){
         if(!empty($_POST["name"]) AND !empty($_POST["surname"]) AND !empty($_POST["email"])){
-            $bdd = new PDO("mysl:host=localhost;charset=UTF-8;dbname=MEETSELLS","root","");
+            $bdd = launch_pdo();
             $sql = "INSERT INTO newsletter(firstname,lastname,email) VALUES(? ? ?)";
             $name = $_POST["name"];
             $surname = $_POST["surname"];

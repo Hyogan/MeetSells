@@ -90,7 +90,7 @@ header nav ul li a {
     scroll-behavior: smooth;
 } 
 .wrapper .images-container img {
-    width: 270px;
+    width: 280px;
     height: 300px;
     object-fit: cover;
     margin-right: 5px;

@@ -1,6 +1,7 @@
 <?php
     session_start();
-        $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+        require 'functions.php';
+        $bdd = launch_pdo();
         $recupUser = $bdd->prepare("SELECT * FROM Users where UserId = ?");
         $recupUser->execute(array($_SESSION["id"]));
     $msgdark = "";
@@ -43,9 +44,9 @@
 
     function uploadPic($picName,$index,$owner){
         if(isset($_FILES[$picName])){
-            $target_dir =  "productImages/";
+            $target_dir =  "ProductsImages/";
             $image_path = $target_dir . basename($_FILES[$picName]['name']);
-            if(getimagesize($_FILES[$picName]['tmp_name'])){
+            if(!empty($_FILES[$picName]['tmp_name'])){
                 if(file_exists($image_path)){
                     $msgdark = 'Image already exists, please choose another or rename that image.';
                 }else if($_FILES[$picName]['size'] > 5000000){
@@ -61,7 +62,7 @@
                         echo "wrong";
                     }
                 
-                    $bdd1 = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+                    $bdd1 = launch_pdo();
                     $sql2 = "INSERT INTO ProductImages(imgTitle,img_scr,imgOwner) VALUES(?,?,?)";
                     $insertPic = $bdd1->prepare($sql2);
                     $insertPic->execute(array($index,$image_path,$owner));

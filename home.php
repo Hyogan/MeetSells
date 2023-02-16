@@ -1,8 +1,8 @@
 <?php
 session_start();
 if($_SESSION["id"]){
-    
-    $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+    require 'functions.php';
+    $bdd = launch_pdo();
 
     if($_SESSION["owner"] == 'admin'){
         $sql = "SELECT * FROM Administrators WHERE idAdmin = ?";
@@ -18,7 +18,7 @@ if($_SESSION["id"]){
         $ownerName = $recupUser->fetch()["firstname"];
     
     }
-    $sql2 = "SELECT * FROM Products, ProductImages WHERE Products.pId = ProductImages.imgOwner AND ProductImages.ImageID = ?";
+    $sql2 = "SELECT * FROM Products, ProductImages WHERE Products.pId = ProductImages.imgOwner AND ProductImages.imgTitle = ?";
     $recupProduct = $bdd->prepare($sql2);
     $recupProduct->execute(array(1));
     $_SESSION["userName"] = $ownerName;
@@ -65,6 +65,7 @@ else{
                                     <a href="product-info.php?pid=<?= $req["pID"] ?>">View Product</a>
                                 </div>
                             </div>
+                            
                             <?php
                         }
                     }

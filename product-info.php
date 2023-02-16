@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-$bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+require 'functions.php';
+$bdd = launch_pdo();
 if(isset($_GET["pid"]) AND !empty($_GET["pid"])){
     $id = $_GET["pid"];
     $recupProdInfos = $bdd->prepare("SELECT * FROM Products WHERE Products.pId = ?");
@@ -72,7 +72,7 @@ if(isset($_GET["pid"]) AND !empty($_GET["pid"])){
                         </div>
                         <div class="ordering">
                             <p class="phone-contact"> <span class=" fa-solid fa-phone"></span>Order by phone :<?= $recupPOwner->fetch()["phoneNumber"]?></p>
-                            <a class="msg-owner" href="profile-messages.php?idOwner=<?= $recupPOwner->fetch()['userID']?>"><span class="fa-solid fa-message"></span> Message owner</a>
+                            <a class="msg-owner" href="profile-messages.php?idOwner=<?=$req["ownerId"]?>"><span class="fa-solid fa-message"></span> Message owner</a>
                         </div>
                     </div>
             </section>

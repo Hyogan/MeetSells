@@ -56,8 +56,14 @@ CREATE TABLE Administrators(
     idAdmin int primary key auto_increment,
     adminPseudo varchar(50) not null,
     adminPassword varchar(50) not null
+    );
+CREATE TABLE contacts(
+    id_owner int not null,
+    id_contact int not null,
+    date_contact datetime not null DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_owner) REFERENCES Users(userID),
+    FOREIGN KEY (id_contact) REFERENCES Users(userID)
 );
-
 
 /*
                 FOR TESTS

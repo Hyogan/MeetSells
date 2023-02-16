@@ -18,10 +18,10 @@ function returnHeader($ownerName,$style){
                 <header>
                     <nav>
                         <ul>
-                        <li><a href='#'>HOME</a></li>
+                        <li><a href='home.php'>HOME</a></li>
                         <li><a href='#'>PRODUCT</a></li>
                         <li><a href='#'>CONTACT</a></li>
-                        <li><a href='profile-messages.php?idOwner = 1'>ABOUT <?php echo $ownerName?></a></li>
+                        <li><a href='profile-messages.php?idOwner=<?= $_SESSION['id']?>'>ABOUT <?php echo $ownerName?></a></li>
                         </ul>
                     </nav>
                 </header>

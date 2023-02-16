@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$bdd = new PDO("mysql:host=localhost;dbname=MEETSELLS;charset=utf8","root","");
+require 'functions.php';
+$bdd = launch_pdo();
 $errmsg = "";
     if(isset($_POST["submitSign"])){
         if(!empty($_POST["firstname"]) AND !empty($_POST["lastname"]) AND !empty($_POST["pseudo"]) AND !empty($_POST["email"]) AND !empty($_POST["phonenum"]) AND !empty($_POST["password"])){
@@ -24,7 +25,7 @@ $errmsg = "";
                 $insertMember = $bdd->prepare($sql);
                 $insertMember->execute(array($name,$surname,$pseudo,$email,$phonenum,$password));
                 $errmsg = "";    
-                $recupUser = $bdd->prepare("SELECT * FROM Users WHERE pseudo = '?' AND userPassword = '?'");
+                $recupUser = $bdd->prepare("SELECT * FROM Users WHERE pseudo = ? AND userPassword = ?");
                 $recupUser->execute(array($pseudo,$password));
                 $_SESSION["id"] = $recupUser->fetch()["userID"];
                 $_SESSION["owner"] = 'admin';

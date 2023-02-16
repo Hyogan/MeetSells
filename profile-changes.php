@@ -5,9 +5,9 @@
 <?php
 session_start();
     require "header.php";
-   returnHeader($_SESSION["userName"],"style/profile-style.css");
-
-   $bdd = new PDO("mysql:host=localhost;charset=UTF8;dbname=MEETSELLS","root","");
+    require 'functions.php';
+    returnHeader($_SESSION["userName"],"style/profile-style.css");
+    $bdd = launch_pdo() ;
    $recupUser = $bdd->prepare("SELECT * FROM Users where UserId = ?");
    $recupUser->execute(array($_SESSION["id"]));
    $productOwner = 10;//= $_GET["idOwner"];
