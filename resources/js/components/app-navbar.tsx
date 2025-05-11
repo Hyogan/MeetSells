@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {FaRegHeart, FaSearch} from "react-icons/fa";
+import {FaRegHeart, FaSearch, FaShoppingCart} from "react-icons/fa";
 import {FiMenu} from "react-icons/fi"
 // import {HiOutlin}
 interface AppNavItem {
@@ -10,7 +10,7 @@ interface AppNavItem {
 const AppNavbar = () => {
 
   const [isMobileMenuOpen,setIsMobileMenuOpen] = useState<boolean>(false);
-
+  const [cartItemCount, setCartItemCount] = useState(4);
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -25,12 +25,12 @@ const AppNavbar = () => {
     <div className="
          flex max-w-full 
         bg-[#eeeeee]  rounded-full px-4 py-2 relative z-10 top-2">
-        <div className="desktop-menu hidden  w-full sm:flex  items-center justify-between ">
+        <div className="desktop-menu hidden  w-full sm:flex px-4  items-center justify-between ">
           <div className="left-side w-fit flex items-center gap-4">
-                    <h1>LOGO</h1>
+                    <h1 className="font-semibold text-xl text-gray-800">Meet<span className="text-greenish font-bold">Sells</span></h1>
                     <ul className="flex items-center gap-4">
                       {urls.map(link => (
-                        <li className="text-greenish hover:text-secondary-o text-lg">
+                        <li key={link.id} className="text-greenish hover:text-secondary-o text-lg">
                           <a href={link.href}>
                             {link.title}
                           </a>
@@ -38,17 +38,26 @@ const AppNavbar = () => {
                       ))}
                     </ul>
           </div>
-          <div className="right-side icons flex items-center gap-4">
-            <a href="login">log in</a>
-            <FaSearch size={20} className="mr-1 font-extralight"/>
+          <div className="right-side text-greenish icons flex items-center gap-4">
+            <a href="login" className="">log in</a>
+            <FaSearch size={20} className="mr-1 text-greenish font-extralight"/>
             <div className="flex items-center">
               <FaRegHeart size={20} className="mr-1" />
-              <span className="w-6  h-6 text-center rounded-full text-white bg-greenish">0</span>
+              <div className="relative">
+                  {/* Shopping cart icon */}
+                  <FaShoppingCart size={20} className="mr-1" />
+                  {/* Cart item count badge */}
+                  {cartItemCount > 0 && (
+                    <span className="absolute top-[-10px] right-[-10px] w-6 h-6 text-center rounded-full text-white bg-greenish text-xs flex items-center justify-center">
+                      {cartItemCount}
+                    </span>
+                  )}
+              </div>
             </div>
           </div>
         </div>
         <div className="mobile-menu w-full flex sm:hidden  items-center justify-between">
-          <h1>LOGO</h1>
+          <h1>MEETSELLS</h1>
           <div className="flex items-center gap-2">
               <span className="w-6  h-6 text-center rounded-full text-white bg-greenish">0</span>
               {/* Replaced FaHamburger with HiOutlineMenu and added toggle functionality */}
@@ -56,7 +65,7 @@ const AppNavbar = () => {
                 <FiMenu
                   size={24}
                   className={`text-greenish transition-transform duration-300 ${
-                    isMobileMenuOpen ? 'transform rotate-180' : ''
+                    isMobileMenuOpen ? 'transform rotate-90' : ''
                   }`}
                 />
               </div>
@@ -81,9 +90,19 @@ const AppNavbar = () => {
             <div className="flex items-center">
               <FaSearch size={20} className="mr-1 font-extralight" />
             </div>
-            <div className="flex items-center">
-              <FaRegHeart size={20} className="mr-1" />
-              <span className="w-6 h-6 text-center rounded-full text-white bg-greenish">0</span>
+              {/* Item count and shopping cart */}
+              <div className="flex items-center">
+                <FaRegHeart size={20} className="mr-1" />
+                <div className="relative">
+                  {/* Shopping cart icon */}
+                  <FaShoppingCart size={20} className="mr-1" />
+                  {/* Cart item count badge */}
+                  {cartItemCount > 0 && (
+                    <span className="absolute top-[-8px] right-[-8px] w-6 h-6 text-center rounded-full text-white bg-greenish text-xs flex items-center justify-center">
+                      {cartItemCount}
+                    </span>
+                  )}
+                </div>
             </div>
           </div>
         </ul>
