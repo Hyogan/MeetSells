@@ -2,6 +2,8 @@
 // import { Head, Link, usePage } from '@inertiajs/react';
 
 // import { AppHeader } from "@/components/app-header";
+import AddedValue from "@/components/home/added-value";
+import Benefits from "@/components/home/benefits";
 import BestSellers from "@/components/home/best-sellers";
 import Hero from "@/components/home/hero";
 // import Hero from "@/components/home/hero";
@@ -15,6 +17,8 @@ export default function Welcome() {
                 <Hero />
             </div>
             <BestSellers />
+            <AddedValue />
+            <Benefits />
         </div>
     );
 }
