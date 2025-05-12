@@ -5,7 +5,9 @@
 import AddedValue from "@/components/home/added-value";
 import Benefits from "@/components/home/benefits";
 import BestSellers from "@/components/home/best-sellers";
+import Features from "@/components/home/features";
 import Hero from "@/components/home/hero";
+import Testimonials from "@/components/home/testimonials";
 // import Hero from "@/components/home/hero";
 
 export default function Welcome() {
@@ -19,6 +21,8 @@ export default function Welcome() {
             <BestSellers />
             <AddedValue />
             <Benefits />
+            <Features />
+            <Testimonials />
         </div>
     );
 }
