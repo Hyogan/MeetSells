@@ -109,8 +109,8 @@ const FeaturedProductCard = ({ product }: { product: typeof featuredProduct }) =
 };
 
 const BestSellersWithFeatured = () => (
-  <div className="bg-gray-100 py-10">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="bg-gray-100 py-10 my-2 rounded-lg">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured & Best Sellers</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <FeaturedProductCard product={featuredProduct} />
