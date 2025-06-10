@@ -18,7 +18,7 @@ const AppNavbar = () => {
   const urls: AppNavItem[] = [
       {id: 1, title: 'home', href: 'home'},
       {id: 2, title: 'shop', href: 'home'},
-      {id: 3, title: 'about', href: 'home'},
+      {id: 3, title: 'about', href: 'about'},
       {id: 4, title: 'blog', href: 'home'},
   ]
   return (

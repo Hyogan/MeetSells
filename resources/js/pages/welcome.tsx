@@ -19,8 +19,8 @@ export default function Welcome() {
                 <Hero />
             </div>
             <BestSellers />
-            <AddedValue />
-            <Benefits />
+            {/* <AddedValue /> */}
+            {/* <Benefits /> */}
             <Features />
             <Testimonials />
         </div>
